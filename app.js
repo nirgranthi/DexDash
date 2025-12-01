@@ -70,15 +70,32 @@ async function fetchTokenData() {
     errorState.classList.add('hidden');
     closeSuggestions(); // Ensure dropdown is closed
 
-    try {
-        // Fetch data from DexScreener
-        const response = await fetch(`https://api.dexscreener.com/latest/dex/search/?q=${query}`);
+        try {
+        let apiUrl = "";
+        
+        // 1. Check karein ki input Address hai ya Naam
+        // Solana addresses usually 32-44 characters ke hote hain
+        const isAddress = query.length > 30 && !query.includes(" "); 
+
+        if (isAddress) {
+            // Agar address hai, toh strict token endpoint use karein (Fast & Accurate)
+            apiUrl = `https://api.dexscreener.com/latest/dex/tokens/${query}`;
+        } else {
+            // Agar naam hai, toh Search endpoint use karein
+            apiUrl = `https://api.dexscreener.com/latest/dex/search/?q=${query}`;
+        }
+
+        console.log("Fetching URL:", apiUrl); // Debugging ke liye
+
+        const response = await fetch(apiUrl);
         const data = await response.json();
 
+        // Error Handling: Agar data nahi mila
         if (!data.pairs || data.pairs.length === 0) {
             throw new Error("No pairs found for this token.");
         }
 
+        // 2. Best Pair Chunein (Sort by Liquidity)
         // Sort by liquidity to get the best pair
         const pair = data.pairs.sort((a, b) => b.liquidity.usd - a.liquidity.usd)[0];
 
