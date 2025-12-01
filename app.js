@@ -72,7 +72,7 @@ async function fetchTokenData() {
 
     try {
         // Fetch data from DexScreener
-        const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${query}`);
+        const response = await fetch(`https://api.dexscreener.com/latest/dex/search/?q=${query}`);
         const data = await response.json();
 
         if (!data.pairs || data.pairs.length === 0) {
