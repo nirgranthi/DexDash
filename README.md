@@ -33,3 +33,4 @@ A lightweight, serverless crypto dashboard that tracks real-time token prices an
 ## Side note:
 * This was a demo project, to test my skills. I wanted to extract the OHLCV values of any of the sol based memecoins that are only few days or hours old, I wanted their whole price chart, from the very start to the present, but I ran into dexscreener's API limitation, it only provides OHLCV of present, not their past's. If you want to then you can try to integrate birdeye API into this to download their full OHLCV with adjustable timeframe and open a pull request.
 * I've written a cli based script to get all the ohlcv data I want but I will not make a gui project on this.
+* AI was used to write css and comment on codes because I think it's boring.
