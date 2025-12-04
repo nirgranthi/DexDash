@@ -9,6 +9,7 @@ A lightweight, serverless crypto dashboard that tracks real-time token prices an
 ## What is this?
 
 **DexDash** is built to be a fast, no-nonsense way to check crypto charts and liquidity data without navigating through heavy exchange interfaces. It runs entirely in the browser—no backend server or API keys required.
+
 ## How to deploy?
 
 * **Step-1:** Log in to <a href="https://vercel.com/" target="https://vercel.com/">vercel.com</a> through your Github.
